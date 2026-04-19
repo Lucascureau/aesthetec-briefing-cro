@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aesthetec — Briefing CRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg-warm: #F5F3EE;
+  --bg-card: #FFFFFF;
+  --bg-dark: #1A1A1A;
+  --bg-dark-soft: #2A2A2A;
+  --border: #E8E4DD;
+  --border-strong: #D4CFC6;
+  --text: #1A1A1A;
+  --text-mid: #4A4A4A;
+  --text-dim: #7A7A7A;
+  --text-light: #FAFAF7;
+  --gold: #C4973B;
+  --gold-soft: #C4973B18;
+  --gold-medium: #C4973B30;
+  --teal: #2A6B5A;
+  --teal-soft: #2A6B5A12;
+  --coral: #C45C3B;
+  --coral-soft: #C45C3B12;
+  --heading: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --radius: 8px;
+  --max-w: 860px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.72; font-size: 15.5px; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--gold); color: white; }
+
+/* HEADER */
+.header {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 80px 32px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  opacity: 0.07;
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+}
+.header-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
+.header h1 {
+  font-family: var(--heading);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.25s;
+}
+.header h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.header-sub {
+  font-size: 16px;
+  color: #AAAA9A;
+  max-width: 520px;
+  line-height: 1.65;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.4s;
+}
+.header-meta {
+  margin-top: 32px;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.55s;
+}
+.header-meta-item {
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 0.5px;
+}
+.header-meta-item strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+/* CONTENT */
+.content {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.5s ease;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section:last-child { border-bottom: none; }
+
+.section-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section h2 {
+  font-family: var(--heading);
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+.section p {
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  max-width: 640px;
+}
+.section p:last-child { margin-bottom: 0; }
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: all 0.25s ease;
+}
+.product-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 2px 12px var(--gold-soft);
+}
+.product-card.flagship {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--bg-card), var(--gold-soft));
+}
+.product-card .product-name {
+  font-family: var(--heading);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.product-card .product-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.product-card .product-desc {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+.product-study {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--border-strong);
+}
+.product-study-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.product-study p {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* STRATEGY CARDS */
+.strategy-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.strategy-card {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.25s ease;
+}
+.strategy-card:hover {
+  border-color: var(--border-strong);
+  transform: translateX(4px);
+}
+.strategy-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.strategy-icon.fab { background: var(--teal-soft); }
+.strategy-icon.soft { background: var(--gold-soft); }
+.strategy-icon.fran { background: var(--coral-soft); }
+.strategy-card h3 {
+  font-family: var(--heading);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.strategy-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+.strategy-tag {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+.strategy-tag.timeline { background: var(--teal-soft); color: var(--teal); }
+.strategy-tag.discussion { background: var(--gold-soft); color: var(--gold); }
+
+/* TEAM */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+.team-card {
+  padding: 16px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+.team-card:hover { border-color: var(--border-strong); }
+.team-card .name {
+  font-weight: 600;
+  font-size: 14.5px;
+  margin-bottom: 2px;
+}
+.team-card .role {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+.team-card.lead {
+  border-left: 3px solid var(--gold);
+}
+
+/* PROJECTS */
+.project-list {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+}
+.project-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.project-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.project-dot.active { background: var(--teal); }
+.project-dot.pending { background: var(--gold); }
+.project-item h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.project-item p {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* REGULATORY */
+.reg-list {
+  margin-top: 20px;
+  display: grid;
+  gap: 8px;
+}
+.reg-item {
+  padding: 14px 18px;
+  background: var(--bg-warm);
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: var(--text-mid);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+}
+.reg-item::before {
+  content: '⚖';
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ANNEX */
+.annex {
+  margin-top: 8px;
+  padding: 40px 0;
+}
+.annex-box {
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-soft));
+  color: var(--text-light);
+  border-radius: 12px;
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.annex-box::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 65%);
+  opacity: 0.06;
+  pointer-events: none;
+}
+.annex-box .section-label { margin-bottom: 12px; }
+.annex-box h2 {
+  font-family: var(--heading);
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: var(--text-light);
+}
+.annex-box p {
+  color: #AAAA9A;
+  font-size: 14.5px;
+  margin-bottom: 12px;
+  max-width: 580px;
+}
+.annex-box p:last-child { margin-bottom: 0; }
+.annex-highlight {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+}
+.annex-highlight h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.annex-highlight p {
+  font-size: 13.5px;
+  color: #999;
+}
+
+/* FOOTER */
+.footer {
+  padding: 40px 32px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+}
+.footer strong { color: var(--text-mid); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .header { padding: 60px 20px 48px; }
+  .content { padding: 0 20px; }
+  .section { padding: 40px 0; }
+  .product-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .strategy-card { grid-template-columns: 1fr; }
+  .strategy-icon { display: none; }
+  .header-meta { gap: 16px; }
+  .annex-box { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-label">Document interne — Confidentiel</div>
+    <h1>Aesthetec — <em>Briefing CRO</em></h1>
+    <p class="header-sub">Vue d'ensemble de l'entreprise, de son positionnement, de son équipe et de ses projets stratégiques pour faciliter ta prise de poste.</p>
+    <div class="header-meta">
+      <div class="header-meta-item">
+        <strong>Destinataire</strong>
+        Thierry — CRO
+      </div>
+      <div class="header-meta-item">
+        <strong>Secteur</strong>
+        Technologies esthétiques professionnelles
+      </div>
+      <div class="header-meta-item">
+        <strong>Siège</strong>
+        France + bureaux Lyon · Dubaï (FZCO)
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- IDENTITÉ -->
+  <div class="section">
+    <div class="section-label">01 — Identité</div>
+    <h2>Ce qu'est Aesthetec</h2>
+    <p>Aesthetec est un <strong>distributeur — et futur fabricant — de technologies esthétiques professionnelles</strong>. L'entreprise conçoit, importe et commercialise des machines à destination des instituts de beauté, centres esthétiques et professionnels de la médecine esthétique.</p>
+    <p>Basée en France avec des bureaux en cours d'ouverture à Lyon, Aesthetec opère aussi depuis Dubaï via une entité FZCO.</p>
+  </div>
+
+  <!-- PRODUITS -->
+  <div class="section">
+    <div class="section-label">02 — Gamme</div>
+    <h2>Produits commercialisés</h2>
+    <div class="product-grid">
+      <div class="product-card flagship">
+        <div class="product-tag">Produit phare</div>
+        <div class="product-name">CRYO</div>
+        <div class="product-desc">7D CryoSculpting — Machine de cryolipolyse. Étude clinique en cours.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Laser V19</div>
+        <div class="product-desc">Laser diode d'épilation. Certification MDR en cours d'obtention.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Hydra Lift</div>
+        <div class="product-desc">Machine d'hydradermabrasion pour soins visage professionnels.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">HIFU</div>
+        <div class="product-desc">Ultrasons focalisés de haute intensité — lifting non invasif.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Masque LED NÉO</div>
+        <div class="product-desc">LED thérapie visage — soins anti-âge et éclat.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-name">Dôme LED LÜM</div>
+        <div class="product-desc">LED thérapie corps — récupération et soins corporels.</div>
+      </div>
+    </div>
+    <div class="product-study">
+      <div class="product-study-title">En étude uniquement</div>
+      <p>IA Check (analyseur de peau par IA) · JetPeel (jet d'eau haute pression) · Laser faisceau unique (diode monopoint)</p>
+    </div>
+  </div>
+
+  <!-- MODÈLE COMMERCIAL -->
+  <div class="section">
+    <div class="section-label">03 — Modèle commercial</div>
+    <h2>Comment Aesthetec vend</h2>
+    <p><strong>B2B exclusivement</strong> — vente directe de machines aux instituts et professionnels de l'esthétique. Vente additionnelle de consommables et accessoires via ThriveCart.</p>
+    <p>Le CRM utilisé est <strong>Zoho CRM</strong> (instances France et Dubaï distinctes).</p>
+  </div>
+
+  <!-- AXES STRATÉGIQUES -->
+  <div class="section">
+    <div class="section-label">04 — Stratégie</div>
+    <h2>Axes de développement</h2>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="strategy-icon fab">🏭</div>
+        <div>
+          <h3>Devenir fabricant</h3>
+          <p>Passer de distributeur à fabricant pour augmenter le CA et les marges. Hydra Lift en premier (6-12 mois), puis Laser (horizon 36 mois). Inclut le démontage des machines pour constitution de nomenclatures et sourcing alternatif de composants.</p>
+          <span class="strategy-tag timeline">En cours — nomenclature</span>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon soft">💻</div>
+        <div>
+          <h3>Software & Data</h3>
+          <p>Projet d'application mobile CRM (Aesthetec Pro) pour les clientes B2B — suivi de séances, fiches clientes, photos avant/après. Également : télémétrie machines et IA diagnostic à terme.</p>
+          <span class="strategy-tag discussion">En discussion</span>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon fran">🏪</div>
+        <div>
+          <h3>Franchise</h3>
+          <p>Création d'un réseau d'instituts sous marque Aesthetec. Modèle envisagé : droit d'entrée + royalties sur le chiffre d'affaires.</p>
+          <span class="strategy-tag discussion">En réflexion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉQUIPE -->
+  <div class="section">
+    <div class="section-label">05 — Équipe</div>
+    <h2>Les personnes clés</h2>
+    <div class="team-grid">
+      <div class="team-card lead">
+        <div class="name">Pierre</div>
+        <div class="role">Directeur — Stratégie, réglementaire, relations fabricants</div>
+      </div>
+      <div class="team-card">
+        <div class="name">David</div>
+        <div class="role">Responsable technique / SAV / Atelier</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Morgane</div>
+        <div class="role">Service client / Réclamations</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Léa</div>
+        <div class="role">Qualité / Documentation réglementaire</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Nawelle</div>
+        <div class="role">Responsable des opérations</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Mélanie</div>
+        <div class="role">Qualité / R&D / Études cliniques</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Jessica</div>
+        <div class="role">Support commercial / Facturation</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Alban</div>
+        <div class="role">Livreur + Technicien</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJETS EN COURS -->
+  <div class="section">
+    <div class="section-label">06 — Projets en cours</div>
+    <h2>Chantiers actifs</h2>
+    <div class="project-list">
+      <div class="project-item">
+        <div class="project-dot active"></div>
+        <div>
+          <h4>Certification MDR — Laser V19</h4>
+          <p>Obtention du certificat MDR pour le laser diode. Inclut la mise en conformité de la plaque d'identification, des certificats et de la documentation technique.</p>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-dot active"></div>
+        <div>
+          <h4>Vieillissement accéléré CRYO</h4>
+          <p>Tests de fiabilité sur 200 cycles — 91 cycles réalisés, zéro défaut constaté. Objectif : prouver la durabilité et optimiser les recommandations d'entretien.</p>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-dot pending"></div>
+        <div>
+          <h4>Nomenclature des machines</h4>
+          <p>Démontage méthodique de chaque machine (Hydra → Laser → CRYO) pour constituer la liste complète des composants, évaluer les coûts et préparer la transition vers la fabrication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RÉGLEMENTAIRE -->
+  <div class="section">
+    <div class="section-label">07 — Réglementaire</div>
+    <h2>Enjeux de conformité</h2>
+    <div class="reg-list">
+      <div class="reg-item">Les machines sont des <strong>dispositifs médicaux</strong> — certification CE / MDR obligatoire pour la commercialisation.</div>
+      <div class="reg-item"><strong>RGPD & hébergement HDS</strong> (Hébergeur de Données de Santé) obligatoire pour tout projet logiciel manipulant des données patients.</div>
+      <div class="reg-item">Toute application liée aux machines doit rester <strong>standalone</strong> — l'intégration de recommandations de paramètres requalifierait l'app en MDSW (Medical Device Software) avec obligation de certification CE.</div>
+      <div class="reg-item">Les certificats CE ne doivent <strong>jamais être modifiés en interne</strong> — responsabilité juridique grave (faux et usage de faux).</div>
+    </div>
+  </div>
+
+  <!-- ANNEX : INFOPRODUIT -->
+  <div class="section annex">
+    <div class="annex-box">
+      <div class="section-label">Annexe — Projet connexe</div>
+      <h2>Infoproduit Esthéticiennes</h2>
+      <p>Un projet <strong>porté par une entité séparée</strong>, en collaboration avec Aesthetec. Programme "De Salariée à Patronne d'Institut" destiné à accompagner les esthéticiennes dans la création de leur propre institut.</p>
+      <p>Ce projet est indépendant d'Aesthetec mais les deux entreprises collaboreront étroitement.</p>
+      <div class="annex-highlight">
+        <h4>Business in the Box</h4>
+        <p>Le pont entre les deux entités : un modèle de location premium de machines Aesthetec avec accompagnement marketing inclus. Les clientes du programme d'infoproduit deviennent des prospects naturelles pour les technologies Aesthetec.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Aesthetec</strong> — Document confidentiel · Avril 2026
+</div>
+
+<script>
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.section').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
