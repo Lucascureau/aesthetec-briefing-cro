@@ -376,6 +376,79 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); line
   margin-top: 1px;
 }
 
+/* COMPETITOR GRID */
+.competitor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+.competitor-card {
+  padding: 18px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.25s ease;
+}
+.competitor-card:hover { border-color: var(--border-strong); }
+.competitor-card .comp-name {
+  font-weight: 600;
+  font-size: 14.5px;
+  margin-bottom: 4px;
+}
+.competitor-card .comp-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.competitor-card .comp-link {
+  font-size: 12.5px;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.competitor-card .comp-link:hover { opacity: 0.7; }
+
+/* ECOSYSTEM */
+.eco-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+.eco-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.eco-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.eco-badge.partner { background: var(--teal-soft); }
+.eco-badge.ambassadors { background: var(--gold-soft); }
+.eco-card h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.eco-card p {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
 /* ANNEX */
 .annex {
   margin-top: 8px;
@@ -433,6 +506,45 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); line
   color: #999;
 }
 
+/* SITE BANNER */
+.site-banner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.site-banner-inner {
+  margin-top: 48px;
+  padding: 20px 24px;
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-medium);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.site-banner-inner p {
+  font-size: 14px;
+  color: var(--text-mid);
+}
+.site-banner-inner p strong { color: var(--text); }
+.site-banner-inner a {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1.5px solid var(--gold);
+  border-radius: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.site-banner-inner a:hover {
+  background: var(--gold);
+  color: white;
+}
+
 /* FOOTER */
 .footer {
   padding: 40px 32px;
@@ -487,6 +599,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); line
   </div>
 </div>
 
+<div class="site-banner">
+  <div class="site-banner-inner">
+    <p><strong>Site Aesthetec</strong> — Découvre notre positionnement et notre gamme en ligne</p>
+    <a href="https://www.aesthetec.fr/" target="_blank" rel="noopener">aesthetec.fr ↗</a>
+  </div>
+</div>
+
 <div class="content">
 
   <!-- IDENTITÉ -->
@@ -494,7 +613,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); line
     <div class="section-label">01 — Identité</div>
     <h2>Ce qu'est Aesthetec</h2>
     <p>Aesthetec est un <strong>distributeur — et futur fabricant — de technologies esthétiques professionnelles</strong>. L'entreprise conçoit, importe et commercialise des machines à destination des instituts de beauté, centres esthétiques et professionnels de la médecine esthétique.</p>
-    <p>Basée en France avec des bureaux en cours d'ouverture à Lyon, Aesthetec opère aussi depuis Dubaï via une entité FZCO.</p>
+    <p>Basée en France avec des bureaux à Lyon, Aesthetec opère aussi depuis Dubaï via une entité FZCO.</p>
   </div>
 
   <!-- PRODUITS -->
@@ -571,6 +690,22 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); line
           <span class="strategy-tag discussion">En réflexion</span>
         </div>
       </div>
+      <div class="strategy-card">
+        <div class="strategy-icon fab">🌍</div>
+        <div>
+          <h3>Développement international</h3>
+          <p>Expansion à l'international envisagée — soit en vente directe, soit via un réseau de distributeurs locaux selon les marchés.</p>
+          <span class="strategy-tag discussion">Envisagé</span>
+        </div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon soft">♻️</div>
+        <div>
+          <h3>Marché secondaire</h3>
+          <p>Créer un marché de revente de technologies d'occasion — permettre aux clientes de renouveler leur parc et aux nouvelles entrantes d'accéder aux machines à un prix d'entrée réduit.</p>
+          <span class="strategy-tag discussion">Envisagé</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -614,9 +749,32 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); line
     </div>
   </div>
 
+  <!-- ÉCOSYSTÈME & FORMATION -->
+  <div class="section">
+    <div class="section-label">06 — Écosystème & Formation</div>
+    <h2>Réseau de formation</h2>
+    <p>Aesthetec dispose de locaux à Lyon qui servent de hub de formation, et s'appuie sur un réseau d'ambassadrices pour le déploiement terrain.</p>
+    <div class="eco-grid">
+      <div class="eco-card">
+        <div class="eco-badge partner">🤝</div>
+        <div>
+          <h4>Pigmentsé — Partenaire formation socle</h4>
+          <p>Partenariat avec Pigmentsé qui dispense les formations socle directement dans les locaux Aesthetec à Lyon. Cela permet d'avoir un cadre de formation professionnel et centralisé pour les nouvelles clientes.</p>
+        </div>
+      </div>
+      <div class="eco-card">
+        <div class="eco-badge ambassadors">⭐</div>
+        <div>
+          <h4>7 ambassadrices</h4>
+          <p>Réseau de 7 ambassadrices qui peuvent accueillir les formations sur les technologies Aesthetec directement dans leurs instituts, pour les nouvelles clientes. Cela offre un maillage territorial et une formation en conditions réelles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- PROJETS EN COURS -->
   <div class="section">
-    <div class="section-label">06 — Projets en cours</div>
+    <div class="section-label">07 — Projets en cours</div>
     <h2>Chantiers actifs</h2>
     <div class="project-list">
       <div class="project-item">
@@ -643,9 +801,43 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); line
     </div>
   </div>
 
+  <!-- CONCURRENCE -->
+  <div class="section">
+    <div class="section-label">08 — Concurrence</div>
+    <h2>Paysage concurrentiel</h2>
+    <p>Les principaux acteurs du marché français des technologies esthétiques professionnelles :</p>
+    <div class="competitor-grid">
+      <div class="competitor-card">
+        <div class="comp-name">CESAM Esthétique</div>
+        <div class="comp-desc">Distributeur basé à Nice, partenaire de marques internationales + technologies propres (Pulse System, Rejulift). Organisme de formation Qualiopi.</div>
+        <a class="comp-link" href="https://www.cesam-esthetic.com/" target="_blank" rel="noopener">cesam-esthetic.com ↗</a>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">GMP Beauty Concept</div>
+        <div class="comp-desc">Fabricant français depuis 1998. Expertise laser diode (Ténor Diode breveté), infrarouge et remodelage corporel.</div>
+        <a class="comp-link" href="https://www.infrarouges-longs.com/" target="_blank" rel="noopener">infrarouges-longs.com ↗</a>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Keros Technology</div>
+        <div class="comp-desc">Leader épilation définitive pour esthéticiennes et infirmières. Laser diode, IPL, électrolyse + solutions minceur et anti-âge.</div>
+        <a class="comp-link" href="https://keros-technology.fr/" target="_blank" rel="noopener">keros-technology.fr ↗</a>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Contour Paris</div>
+        <div class="comp-desc">Fabricant français haut de gamme. Conception et fabrication 100% France. Cryolipolyse, laser, radiofréquence, anti-cellulite.</div>
+        <a class="comp-link" href="https://contour-paris.com/fr/" target="_blank" rel="noopener">contour-paris.com ↗</a>
+      </div>
+      <div class="competitor-card">
+        <div class="comp-name">Alma Beauty</div>
+        <div class="comp-desc">Division esthétique d'Alma Lasers, leader mondial (+90 pays, 25 ans). Soprano Titanium, Harmony XL Pro, technologies FDA/CE.</div>
+        <a class="comp-link" href="https://almafrance.fr/" target="_blank" rel="noopener">almafrance.fr ↗</a>
+      </div>
+    </div>
+  </div>
+
   <!-- RÉGLEMENTAIRE -->
   <div class="section">
-    <div class="section-label">07 — Réglementaire</div>
+    <div class="section-label">09 — Réglementaire</div>
     <h2>Enjeux de conformité</h2>
     <div class="reg-list">
       <div class="reg-item">Les machines sont des <strong>dispositifs médicaux</strong> — certification CE / MDR obligatoire pour la commercialisation.</div>
